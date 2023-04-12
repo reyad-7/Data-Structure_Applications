@@ -1,3 +1,6 @@
+
+// created by mohamed reyad on 11 / 4 / 2023
+
 #include <iostream>
 using namespace std ;
 
@@ -339,57 +342,77 @@ void removeAt (int index ) {
 
 
 int main() {
+    // Test 1: Create a linked list of integers and insert elements at head and tail
+    linkedList<int> intList;
+    cout << "Inserting elements at head: ";
+    for (int i = 5; i >= 1; i--) {
+        intList.insertAtHead(i);
+    }
+    intList.print();
+    cout << endl;
 
-//    linkedList<int> myList;
-//    myList.insertAtTail(5);
-//    myList.insertAtTail(7);
-//    myList.insertAtTail(10);
-//    myList.removeAt(1);
-//    myList.print(); // expected output: 5 10
+    cout << "Inserting elements at tail: ";
+    for (int i = 6; i <= 10; i++) {
+        intList.insertAtTail(i);
+    }
+    intList.print();
+    cout << endl;
 
-//    linkedList<int> myList;
-//    myList.insertAtTail(5);
-//    myList.insertAtTail(7);
-//    myList.insertAtTail(10);
-//    bool exists = myList.isExist(10);
-//    cout << exists << endl; // expected output: 1 (true)
+    // Test 2: Remove elements from head and tail
+    intList.removeAtHead();
+    cout << "After removing head element: ";
+    intList.print();
+    cout << endl;
 
-//    linkedList<int> myList;
-//    myList.insertAtTail(5);
-//    myList.insertAtTail(7);
-//    myList.insertAtTail(10);
-//    int value = myList.retrieveAt(1);
-//    cout << value << endl; // expected output: 7
+    intList.removeAtTail();
+    cout << "After removing tail element: ";
+    intList.print();
+    cout << endl;
 
-//    linkedList<int> myList;
-//    myList.insertAtTail(5);
-//    myList.insertAtTail(7);
-//    myList.insertAtTail(10);
-//    bool isEqual = myList.isItemAtEqual(10, 3);
-//    cout << isEqual << endl; // expected output: 1 (true)
+    // Test 3: Insert an element at a specific position
+    intList.insertAt(4, 20);
+    cout << "After inserting an element at position 4: ";
+    intList.print();
+    cout << endl;
 
+    // Test 4: Remove an element from a specific position
+    intList.removeAt(3);
+    cout << "After removing an element from position 3: ";
+    intList.print();
+    cout << endl;
 
-//    linkedList<int> myList;
-//    myList.insertAtTail(5);
-//    myList.insertAtTail(7);
-//    myList.insertAtTail(10);
-//    myList.replaceAt(8, 1);
-//    myList.print(); // expected output: 5 8 10
-//    cout <<endl;
-//    myList.clear();
-//    myList.print(); // expected output:
+    // Test 5: Retrieve an element at a specific position
+    cout << "Element at position 2: " << intList.retrieveAt(2) << endl;
 
-        linkedList<int> list;
-        list.insertAtTail(10);
-        list.insertAtTail(20);
-        list.insertAtTail(30);
-        list.insertAtTail(40);
-        cout << "Before swapping: ";
-        list.print(); // Output: 10 20 30 40
-        cout << endl;
-        list.swap(1,3); // Swap the second and third elements
-        cout << "After swapping: ";
-        list.print(); // Output: 10 30 20 40
-        cout << endl;
-        return 0;
+    // Test 6: Check if an element exists in the list
+    int element = 7;
+    if (intList.isExist(element)) {
+        cout << element << " exists in the list." << endl;
+    }
+    else {
+        cout << element << " does not exist in the list." << endl;
+    }
+
+    // Test 7: Check if an element at a specific position is equal to a given value
+    int index = 6;
+    if (intList.isItemAtEqual(10, index)) {
+        cout << "Element at position " << index << " is equal to 10." << endl;
+    }
+    else {
+        cout << "Element at position " << index << " is not equal to 10." << endl;
+    }
+
+    // Test 8: Replace an element at a specific position with a new value
+    intList.replaceAt(30, 2);
+    cout << "After replacing element at position 2 with 30: ";
+    intList.print();
+    cout << endl;
+
+    // Test 9: Swap two elements at specific positions
+    intList.swap(2, 5);
+    cout << "After swapping elements at positions 2 and 5: ";
+    intList.print();
+    cout << endl;
+
+    return 0;
 }

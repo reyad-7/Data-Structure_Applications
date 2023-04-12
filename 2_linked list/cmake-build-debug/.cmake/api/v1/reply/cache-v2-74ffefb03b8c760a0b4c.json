@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "e:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/2/2_linked list/cmake-build-debug"
+			"value" : "e:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/githup assign 2/Assignment_2--Data-Structure-/2_linked list/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/2/2_linked list"
+			"value" : "E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/githup assign 2/Assignment_2--Data-Structure-/2_linked list"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1239,7 +1239,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/2/2_linked list/cmake-build-debug"
+			"value" : "E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/githup assign 2/Assignment_2--Data-Structure-/2_linked list/cmake-build-debug"
 		},
 		{
 			"name" : "linked_list_IS_TOP_LEVEL",
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/2/2_linked list"
+			"value" : "E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/githup assign 2/Assignment_2--Data-Structure-/2_linked list"
 		}
 	],
 	"kind" : "cache",

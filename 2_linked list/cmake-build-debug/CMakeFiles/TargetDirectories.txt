@@ -1,3 +1,3 @@
-E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/2/2_linked list/cmake-build-debug/CMakeFiles/linked_list.dir
-E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/2/2_linked list/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/2/2_linked list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/githup assign 2/Assignment_2--Data-Structure-/2_linked list/cmake-build-debug/CMakeFiles/linked_list.dir
+E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/githup assign 2/Assignment_2--Data-Structure-/2_linked list/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/STUDYING/STUDYING 2nd Semester/Data Structure/Assignments/githup assign 2/Assignment_2--Data-Structure-/2_linked list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
