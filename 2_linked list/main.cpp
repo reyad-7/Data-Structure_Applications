@@ -1,21 +1,29 @@
-
 // created by mohamed reyad on 11 / 4 / 2023
 
 #include <iostream>
 using namespace std ;
+template<class T>
+
+    struct node{
+    T item ;
+    node *next;
+};
 
 template<class T>
 
 class linkedList{
-    struct node{
-        T item ;
-        node *next;
-    };
-    node* first ;
-    node* last ;
+    node<T>* first ;
+    node<T> *last ;
     int length ;
-
 public :
+
+    node<T>* getFirst(){
+    return this->first;
+}
+    node<T>* getLast(){
+    return this->last;
+}
+
     linkedList(){
     first = last = NULL;
     length = 0;
@@ -25,8 +33,8 @@ bool isEmpty (){
 }
 
 void insertAtHead(T element ){
-    node* newNode;
-    newNode = new node;
+    node<T>* newNode;
+    newNode = new node<T>;
     newNode->item=element;
     if (length== 0){
         first=last=newNode;
@@ -40,8 +48,8 @@ void insertAtHead(T element ){
 }
 
 void insertAtTail (T element) {
-    node *newNode;
-    newNode = new node;
+    node<T> *newNode;
+    newNode = new node<T>;
     newNode->item = element;
     if (length == 0) {
         first = last = newNode;
@@ -60,7 +68,7 @@ void insertAtTail (T element) {
         cout <<"out of range \n";
     }
     else {
-        node*newNode=new node ;
+        node<T>*newNode=new node<T> ;
         newNode->item = element ;
     if (pos == 0){
         insertAtHead(element);
@@ -69,7 +77,7 @@ void insertAtTail (T element) {
         insertAtTail(element);
     }
     else {
-        node *cur=first;
+        node <T> *cur=first;
         for (int i = 1; i < pos ; ++i) {
             cur=cur->next;
         }
@@ -81,7 +89,7 @@ void insertAtTail (T element) {
         }
 }
     void print (){
-    node *cur=first;
+    node<T> *cur=first;
         while (cur!=NULL) {
             cout << cur->item<<" ";
             cur=cur->next;
@@ -98,7 +106,7 @@ void removeAtHead (){
         length--;
     }
     else{
-        node *temp=new node ;
+        node<T> *temp=new node<T> ;
         temp=first;
         first =first->next;
         delete temp ;
@@ -116,7 +124,8 @@ void removeAtTail() {
             length--;
         }
         else {
-            node*cur,*pre;
+            node<T>*cur;
+            node<T>*pre;
             cur=first->next;
             pre=cur;
             while(cur!= last){
@@ -133,7 +142,8 @@ void removeAtTail() {
     }
 
 void removeAt (int index ) {
-    node *cur,*pre;
+    node <T>*cur;
+    node<T>*pre;
     if (index<0 || index> length ){
         cout <<"out of range \n";
     }
@@ -161,7 +171,7 @@ void removeAt (int index ) {
     }
 
     bool isExist (int element){
-        node *cur=first;
+        node<T>*cur=first;
         while (cur!=NULL) {
             if (cur->item==element){
                 return true ;
@@ -175,7 +185,7 @@ void removeAt (int index ) {
 
 
     T retrieveAt (int index) {
-    node *cur = first ;
+    node<T> *cur = first ;
     if(index == 0){
         return first->item;
     }
@@ -191,7 +201,7 @@ void removeAt (int index ) {
 
 }
    bool isItemAtEqual (T element , int index) {
-       node*cur = first ;
+       node<T>*cur = first ;
         if (index==0){
             return (first->item == element);
         }
@@ -207,7 +217,7 @@ void removeAt (int index ) {
 
 }
    void replaceAt (T newElement, int index){
-       node*cur = first ;
+       node<T>*cur = first ;
        if (index==0){
            first->item = newElement ;
        }
@@ -222,7 +232,6 @@ void removeAt (int index ) {
 
        }
 
-
    }
 
     void swap (int firstItemIdx, int secondItemIdx){
@@ -236,16 +245,17 @@ void removeAt (int index ) {
 
         // Case 1: Swap head and non-head node
         if (firstItemIdx == 0 && secondItemIdx != 0) {
-            node *secondCur = first, *secondPrev = NULL;
+            node<T> *secondCur = first;
+            node<T>*secondPrev = NULL;
             for (int i = 0; i < secondItemIdx; ++i) {
                 secondPrev = secondCur;
                 secondCur = secondCur->next;
             }
 
-            node* temp = secondCur->next;
+            node <T>*temp = secondCur->next;
 
             secondPrev->next = first;
-            node *firstNext = first->next;
+            node <T>*firstNext = first->next;
             first->next = temp;
             secondCur->next = firstNext;
 
@@ -255,17 +265,18 @@ void removeAt (int index ) {
 
         // Case 2: Swap non-tail and tail node
         if (firstItemIdx != 0 && secondItemIdx == length - 1) {
-            node *firstCur = first, *firstPrev = NULL;
+            node<T> *firstCur = first, *firstPrev = NULL;
             for (int i = 0; i < firstItemIdx; ++i) {
                 firstPrev = firstCur;
                 firstCur = firstCur->next;
             }
-            node *secondPrev = first, *secondCur = secondPrev->next;
+            node<T> *secondPrev = first;
+            node<T>*secondCur = secondPrev->next;
             while (secondCur->next != NULL) {
                 secondPrev = secondCur;
                 secondCur = secondCur->next;
             }
-            node* temp = secondCur->next;
+            node<T>* temp = secondCur->next;
 
             firstPrev->next=secondCur;
             secondPrev->next=firstCur;
@@ -279,18 +290,20 @@ void removeAt (int index ) {
 
         // Case 3: Swap head and tail node
         if (firstItemIdx == 0 && secondItemIdx == length - 1) {
-            node *firstCur = first, *firstPrev = NULL;
+            node <T>*firstCur = first;
+            node<T>*firstPrev = NULL;
             for (int i = 0; i < firstItemIdx; ++i) {
                 firstPrev = firstCur;
                 firstCur = firstCur->next;
             }
-            node *secondPrev = first, *secondCur = secondPrev->next;
+            node<T> *secondPrev = first;
+            node<T>*secondCur = secondPrev->next;
             while (secondCur->next != NULL) {
                 secondPrev = secondCur;
                 secondCur = secondCur->next;
             }
 
-            node* temp = secondCur->next;
+            node<T>*temp = secondCur->next;
 
             firstPrev->next = secondCur;
             secondCur->next = firstCur->next;
@@ -303,18 +316,20 @@ void removeAt (int index ) {
         }
 
         // Case 4: Swap non-head and non-tail node
-        node *firstCur = first, *firstPrev = NULL;
+        node<T> *firstCur = first;
+        node<T>*firstPrev = NULL;
         for (int i = 0; i < firstItemIdx; ++i) {
             firstPrev = firstCur;
             firstCur = firstCur->next;
         }
-        node *secondCur = first, *secondPrev = NULL;
+        node<T> *secondCur = first;
+        node<T>*secondPrev = NULL;
         for (int i = 0; i < secondItemIdx; ++i) {
             secondPrev = secondCur;
             secondCur = secondCur->next;
         }
 
-        node* temp = secondCur->next;
+        node<T>*temp = secondCur->next;
 
         firstPrev->next = secondCur;
         secondPrev->next = firstCur;
@@ -323,9 +338,9 @@ void removeAt (int index ) {
 }
 
     void clear() {
-        node* cur = first;
+        node<T>*cur = first;
         while (cur != NULL) {
-            node* temp = cur;
+            node<T>*temp = cur;
             cur = cur->next;
             delete temp;
         }
@@ -334,20 +349,52 @@ void removeAt (int index ) {
         cout <<"inside clear function \n";
     }
 
-
     int linkedListSize (){
         return length ;
     }
+
 };
 
 
+template<class T>
+void combineNodesBetweenZeros(linkedList<int>& list) {
+    node<int> * current= list.getFirst();
+    node <int>*zero= nullptr;
+    int sum = 0;
+    while (current != nullptr) {
+        if (current->item == 0) {
+            if (zero != nullptr) {
+                zero->item=sum;
+                zero->next=current;
+            }
+            sum = 0;
+            zero = current;
+        } else {
+            sum += current->item;
+        }
+        current = current->next;
+    }
+    if (zero != nullptr) {
+        zero->item=sum;
+        zero->next=nullptr;
+    }
+    while (list.getFirst() != nullptr && list.getFirst()->item == 0) {
+        list.removeAtHead();
+    }
+    while (list.getLast() != nullptr && list.getLast()->item == 0) {
+        list.removeAtTail();
+    }
+}
+
+
 int main() {
-    // Test 1: Create a linked list of integers and insert elements at head and tail
+//     Test 1: Create a linked list of integers and insert elements at head and tail
     linkedList<int> intList;
     cout << "Inserting elements at head: ";
     for (int i = 5; i >= 1; i--) {
         intList.insertAtHead(i);
     }
+
     intList.print();
     cout << endl;
 
@@ -414,5 +461,41 @@ int main() {
     intList.print();
     cout << endl;
 
-    return 0;
+//Test 10: Create a linked list of integers and combine nodes between  any two consecutive 0s    // problem 1
+
+    linkedList<int> list;
+    list.insertAtTail(0);
+    list.insertAtTail(3);
+    list.insertAtTail(1);
+    list.insertAtTail(0);
+    list.insertAtTail(4);
+    list.insertAtTail(5);
+    list.insertAtTail(2);
+    list.insertAtTail(0);
+    cout <<"\nproblem 1 \nlist before combining between 2 zeros \n";
+    list.print();
+    cout <<"\n";
+    combineNodesBetweenZeros<int>(list);
+    cout <<"result after combining between 2 zeros \n";
+    list.print();
+    cout <<"\n";
+
+    linkedList<int> list1;
+    list1.insertAtTail(0);
+    list1.insertAtTail(1);
+    list1.insertAtTail(0);
+    list1.insertAtTail(3);
+    list1.insertAtTail(0);
+    list1.insertAtTail(2);
+    list1.insertAtTail(2);
+    list1.insertAtTail(0);
+
+    cout <<"\nproblem 1 \nlist before combining between 2 zeros \n";
+    list1.print();
+    cout <<"\n";
+    combineNodesBetweenZeros<int>(list1);
+    cout <<"result after combining between 2 zeros \n";
+    list1.print();
+
+
 }
