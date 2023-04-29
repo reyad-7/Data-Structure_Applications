@@ -1,0 +1,5 @@
+# ninja log v5
+0	1254	7044984446083931	CMakeFiles/5_circular_linked_list.dir/main.cpp.obj	1b7322167e750e05
+1256	1337	7044984446893698	5_circular_linked_list.exe	81b0ef663432e1ac
+3	1276	7044984664394147	CMakeFiles/5_circular_linked_list.dir/main.cpp.obj	1b7322167e750e05
+1276	1358	7044984665196418	5_circular_linked_list.exe	81b0ef663432e1ac
