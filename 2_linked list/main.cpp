@@ -4,7 +4,7 @@
 using namespace std ;
 template<class T>
 
-    struct node{
+struct node{
     T item ;
     node *next;
 };
@@ -12,110 +12,110 @@ template<class T>
 template<class T>
 
 class linkedList{
+public :
     node<T>* first ;
     node<T> *last ;
     int length ;
-public :
 
     node<T>* getFirst(){
-    return this->first;
-}
+        return this->first;
+    }
     node<T>* getLast(){
-    return this->last;
-}
+        return this->last;
+    }
 
     linkedList(){
-    first = last = NULL;
-    length = 0;
-}
-bool isEmpty (){
-    return(first == NULL);
-}
+        first = last = NULL;
+        length = 0;
+    }
+    bool isEmpty (){
+        return(first == NULL);
+    }
 
-void insertAtHead(T element ){
-    node<T>* newNode;
-    newNode = new node<T>;
-    newNode->item=element;
-    if (length== 0){
-        first=last=newNode;
-        newNode->next=NULL;
+    void insertAtHead(T element ){
+        node<T>* newNode;
+        newNode = new node<T>;
+        newNode->item=element;
+        if (length== 0){
+            first=last=newNode;
+            newNode->next=NULL;
+        }
+        else{
+            newNode->next=first;
+            first=newNode;
+        }
+        length++;
     }
-    else{
-        newNode->next=first;
-        first=newNode;
-    }
-    length++;
-}
 
-void insertAtTail (T element) {
-    node<T> *newNode;
-    newNode = new node<T>;
-    newNode->item = element;
-    if (length == 0) {
-        first = last = newNode;
-        newNode->next = NULL;
+    void insertAtTail (T element) {
+        node<T> *newNode;
+        newNode = new node<T>;
+        newNode->item = element;
+        if (length == 0) {
+            first = last = newNode;
+            newNode->next = NULL;
+        }
+        else {
+            last->next = newNode;
+            newNode->next = NULL;
+            last = newNode;
+        }
+        length++;
     }
-    else {
-        last->next = newNode;
-        newNode->next = NULL;
-        last = newNode;
-    }
-    length++;
-}
 
     void insertAt(int pos , int element ){
-    if (pos<0 || pos>length){
-        cout <<"out of range \n";
-    }
-    else {
-        node<T>*newNode=new node<T> ;
-        newNode->item = element ;
-    if (pos == 0){
-        insertAtHead(element);
-    }
-    if(pos == length){
-        insertAtTail(element);
-    }
-    else {
-        node <T> *cur=first;
-        for (int i = 1; i < pos ; ++i) {
-            cur=cur->next;
+        if (pos<0 || pos>length){
+            cout <<"out of range \n";
         }
-        newNode->next=cur->next;
-        cur->next=newNode;
-        length++;
-        }
+        else {
+            node<T>*newNode=new node<T> ;
+            newNode->item = element ;
+            if (pos == 0){
+                insertAtHead(element);
+            }
+            if(pos == length){
+                insertAtTail(element);
+            }
+            else {
+                node <T> *cur=first;
+                for (int i = 1; i < pos ; ++i) {
+                    cur=cur->next;
+                }
+                newNode->next=cur->next;
+                cur->next=newNode;
+                length++;
+            }
 
         }
-}
+    }
     void print (){
-    node<T> *cur=first;
+        node<T> *cur=first;
         while (cur!=NULL) {
             cout << cur->item<<" ";
             cur=cur->next;
         }
-}
+    }
 
-void removeAtHead (){
-    if (length == 0){
-        cout <<"the list is already empty ";
+    void removeAtHead (){
+        if (length == 0){
+            cout <<"the list is already empty ";
+        }
+        if (length ==1 ){
+            delete first;
+            first=last=NULL;
+            length--;
+        }
+        else{
+            node<T> *temp=new node<T> ;
+            temp=first;
+            first =first->next;
+            delete temp ;
+            length--;
+        }
     }
-    if (length ==1 ){
-        delete first;
-        first=last=NULL;
-        length--;
-    }
-    else{
-        node<T> *temp=new node<T> ;
-        temp=first;
-        first =first->next;
-        delete temp ;
-        length--;
-    }
-}
 
-void removeAtTail() {
-       if (length == 0){
+    void removeAtTail() {
+        if (length == 0){
             cout <<"the list is already empty ";
         }
         if (length ==1 ){
@@ -141,33 +141,33 @@ void removeAtTail() {
 
     }
 
-void removeAt (int index ) {
-    node <T>*cur;
-    node<T>*pre;
-    if (index<0 || index> length ){
-        cout <<"out of range \n";
-    }
-    if (length == 0){
-        cout <<"the list is already empty ";
-    }
-    if (index == 0 ){
-        removeAtHead();
-    }
-    if (index==length){
-        removeAtTail();
-    }
-    else {
-        cur=first->next;
-        pre=first;
-        for (int i = 0; i < index-1 ; ++i) {    //cur pointer on the index .... pre pointer on the node before cur
-            pre = cur;
-            cur=cur->next;
+    void removeAt (int index ) {
+        node <T>*cur;
+        node<T>*pre;
+        if (index<0 || index> length ){
+            cout <<"out of range \n";
         }
+        if (length == 0){
+            cout <<"the list is already empty ";
+        }
+        if (index == 0 ){
+            removeAtHead();
+        }
+        if (index==length){
+            removeAtTail();
+        }
+        else {
+            cur=first->next;
+            pre=first;
+            for (int i = 0; i < index-1 ; ++i) {    //cur pointer on the index .... pre pointer on the node before cur
+                pre = cur;
+                cur=cur->next;
+            }
             pre->next=cur->next;
             delete cur;
             length--;
 
-    }
+        }
     }
 
     bool isExist (int element){
@@ -185,23 +185,23 @@ void removeAt (int index ) {
 
 
     T retrieveAt (int index) {
-    node<T> *cur = first ;
-    if(index == 0){
-        return first->item;
-    }
-    if (index == length ){
-        return last->item;
-    }
-    else {
-        for (int i = 0; i < index ; ++i){
-            cur=cur->next;
+        node<T> *cur = first ;
+        if(index == 0){
+            return first->item;
         }
-        return cur->item;
-    }
+        if (index == length ){
+            return last->item;
+        }
+        else {
+            for (int i = 0; i < index ; ++i){
+                cur=cur->next;
+            }
+            return cur->item;
+        }
 
-}
-   bool isItemAtEqual (T element , int index) {
-       node<T>*cur = first ;
+    }
+    bool isItemAtEqual (T element , int index) {
+        node<T>*cur = first ;
         if (index==0){
             return (first->item == element);
         }
@@ -215,24 +215,24 @@ void removeAt (int index ) {
             return (element==cur->item);
         }
 
-}
-   void replaceAt (T newElement, int index){
-       node<T>*cur = first ;
-       if (index==0){
-           first->item = newElement ;
-       }
-       if (index==length){
+    }
+    void replaceAt (T newElement, int index){
+        node<T>*cur = first ;
+        if (index==0){
+            first->item = newElement ;
+        }
+        if (index==length){
             last->item = newElement ;
-       }
-       else {
-           for (int i = 0; i < index ; ++i) {
-               cur=cur->next;
-           }
-           cur->item = newElement ;
+        }
+        else {
+            for (int i = 0; i < index ; ++i) {
+                cur=cur->next;
+            }
+            cur->item = newElement ;
 
-       }
+        }
 
-   }
+    }
 
     void swap (int firstItemIdx, int secondItemIdx){
         if (firstItemIdx == secondItemIdx) {
@@ -335,7 +335,7 @@ void removeAt (int index ) {
         secondPrev->next = firstCur;
         secondCur->next = firstCur->next;
         firstCur->next = temp;
-}
+    }
 
     void clear() {
         node<T>*cur = first;
@@ -385,7 +385,32 @@ void combineNodesBetweenZeros(linkedList<int>& list) {
         list.removeAtTail();
     }
 }
-
+//Problem 2
+    node<int>* merge_K_Lists(node<int> *arr[],int k) {
+    node<int>* head = new node<int>;
+    head->next= NULL;
+    node<int>* tail = new node<int>;
+    tail =head;
+    bool ck = true;
+    while (ck) {
+        int mini = INT_MAX;
+        int mini_index = -1;
+        ck = false;
+        for (int i = 0; i < k; i++) {
+            if (arr[i] != NULL && arr[i]->item < mini) {
+                mini = arr[i]->item;
+                mini_index = i;
+                ck = true;
+            }
+        }
+        if (ck) {
+            tail->next = arr[mini_index];
+            tail = tail->next;
+            arr[mini_index] = arr[mini_index]->next;
+        }
+    }
+    return head->next;
+}
 
 int main() {
 //     Test 1: Create a linked list of integers and insert elements at head and tail
@@ -496,6 +521,62 @@ int main() {
     combineNodesBetweenZeros<int>(list1);
     cout <<"result after combining between 2 zeros \n";
     list1.print();
-
-
+    cout<<endl;
+//________________________________________________________________
+    linkedList<int>l1,l2,l3,l4,l5,l6;
+    l1.insertAtHead(5);
+    l1.insertAtHead(4);
+    l1.insertAtHead(1);
+    l2.insertAtHead(4);
+    l2.insertAtHead(2);
+    l2.insertAtHead(1);
+    l3.insertAtHead(6);
+    l3.insertAtHead(2);
+    l4.insertAtHead(7);
+    l4.insertAtHead(5);
+    l4.insertAtHead(3);
+    l4.insertAtHead(1);
+    l5.insertAtHead(8);
+    l5.insertAtHead(6);
+    l5.insertAtHead(4);
+    l5.insertAtHead(2);
+    l6.insertAtHead(10);
+    l6.insertAtHead(9);
+    l6.insertAtHead(0);
+    //________________________________________________________________
+    cout<<endl;
+    cout<<"Problem 2\n";
+    cout<<"1st test case ::\n";
+    cout<<"lists before merge:\n";
+    l1.print();
+    cout<<endl;
+    l2.print();
+    cout<<endl;
+    cout<<endl;
+    l3.print();
+    cout<<endl;
+    cout<<"After Merging ::\n";
+    node<int>* arr[]= {l1.first,l2.first,l3.first};
+    node<int>* merged_list = merge_K_Lists(arr,3);
+    while (merged_list) {
+        cout << merged_list->item << " ";
+        merged_list = merged_list->next;
+    }
+    cout<<endl<<endl;
+    cout<<"2nd test case ::\n";
+    cout<<"lists before merge:\n";
+    l4.print();
+    cout<<endl;
+    l5.print();
+    cout<<endl;
+    cout<<endl;
+    l6.print();
+    cout<<endl;
+    cout<<"After Merging ::\n";
+    node<int>* arr1[]= {l4.first,l5.first,l6.first};
+    merged_list = merge_K_Lists(arr1,3);
+    while (merged_list) {
+        cout << merged_list->item << " ";
+        merged_list = merged_list->next;
+    }
 }
